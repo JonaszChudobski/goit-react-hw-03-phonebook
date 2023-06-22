@@ -18,8 +18,10 @@ export class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const contactsToBeStored = JSON.stringify(this.state.contacts);
-    localStorage.setItem('contacts', contactsToBeStored);
+    if (this.state.contacts !== prevState.contacts) {
+      const contactsToBeStored = JSON.stringify(this.state.contacts);
+      localStorage.setItem('contacts', contactsToBeStored);
+    }
   }
 
   handleChange = e => {
