@@ -8,7 +8,7 @@ const numberId = nanoid();
 export const ContactForm = ({ onChange, onSubmit }) => {
   return (
     <>
-      <form className={css.form} onSubmit={onSubmit}>
+      <form id="form" className={css.form} onSubmit={onSubmit}>
         <label htmlFor={nameId}>Name</label>
         <input
           onChange={onChange}
