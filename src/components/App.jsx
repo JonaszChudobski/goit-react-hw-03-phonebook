@@ -7,8 +7,8 @@ import { Filter } from './Filter/Filter';
 export const App = () => {
   const [contacts, setContacts] = useState([]);
   const [filter, setFilter] = useState('');
-  const [Name, setName] = useState('');
-  const [Number, setNumber] = useState('');
+  const [nameState, setNameState] = useState('');
+  const [numberState, setNumberState] = useState('');
 
   useEffect(() => {
     const storedContacts = JSON.parse(localStorage.getItem('contacts'));
@@ -25,9 +25,9 @@ export const App = () => {
   const handleChange = e => {
     const { name, value } = e.target;
     if (name === 'name') {
-      setName(value);
+      setNameState(value);
     } else {
-      setNumber(value);
+      setNumberState(value);
     }
   };
 
@@ -40,12 +40,12 @@ export const App = () => {
     e.preventDefault();
     const form = e.target;
     const id = nanoid();
-    const isExist = contacts.find(contact => contact.name === Name);
+    const isExist = contacts.find(contact => contact.name === nameState);
     isExist
-      ? alert(`${Name} already exists in contacts.`)
+      ? alert(`${nameState} already exists in contacts.`)
       : setContacts(prevContacts => [
           ...prevContacts,
-          { name: Name, number: Number, id: id },
+          { name: nameState, number: numberState, id: id },
         ]);
     form.reset();
   };
